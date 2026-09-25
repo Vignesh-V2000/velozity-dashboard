@@ -26,7 +26,8 @@ export function SocketProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    const newSocket = io('/', {
+    const serverUrl = import.meta.env.VITE_API_URL || '/';
+    const newSocket = io(serverUrl, {
       auth: { token: accessToken },
       transports: ['websocket', 'polling'],
     });
